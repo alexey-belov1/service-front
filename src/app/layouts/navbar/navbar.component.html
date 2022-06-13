@@ -1,1 +1,18 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark mt-0">
+  <ul class="navbar-nav ms-4 me-auto">
+    <li class="nav-item me-5" *ngFor="let item of items">
+      <a class="nav-link" [routerLink]="item.router">{{item.text}}</a>
+    </li>
+  </ul>
+
+  <ul class="navbar-nav me-3">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="logout.router">{{logout.text}}</a>
+    </li>
+  </ul>
+
+<!--  [routerLink]="item.router"
+  (mouseenter)="setHoverTrue()"
+  (mouseleave)="setHoverFalse()"-->
+
+</nav>

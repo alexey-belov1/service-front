@@ -6,18 +6,26 @@ import {MainLayoutComponent} from '../layouts/main-layout/main-layout.component'
 const routes: Routes = [
     {
         path: '', component: MainLayoutComponent, children: [
-            {path: '', redirectTo: '/', pathMatch: 'full'},
+            {path: '', redirectTo: '/deals', pathMatch: 'full'},
             {
-                path: '',
-                loadChildren: () => import('../entities/services-page/services-page.module').then(m => m.ServicesPageModule)
+                path: 'deals',
+                loadChildren: () => import('../entities/deals-page/deals-page.module').then(m => m.DealsPageModule)
             },
             {
-              path: 'create-service',
-              loadChildren: () => import('../entities/create-service-page/create-service-page.module').then(m => m.CreateServicePageModule)
+                path: 'deal',
+                loadChildren: () => import('../entities/deal-detail-page/deal-detail-page.module').then(m => m.DealDetailPageModule)
+            },
+            {
+              path: 'create-deal',
+              loadChildren: () => import('../entities/create-service-page/create-deal-page.module').then(m => m.CreateDealPageModule)
             },
             {
                 path: 'login',
                 loadChildren: () => import('../entities/login-page/login-page.module').then(m => m.LoginPageModule)
+            },
+            {
+              path: 'registration',
+              loadChildren: () => import('../entities/registration-page/registration-page.module').then(m => m.RegistrationPageModule)
             }
         ]
     }
