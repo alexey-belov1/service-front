@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pt-2">
     <div class="card">
         <div class="card-header">Список оказанных услуг</div>
         <div class="card-body">
@@ -11,30 +11,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><a href="/deal">1</a></td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                    <tr class="tp-tasks-tr" *ngFor="let deal of deals">
+                        <td class="tp-tasks-td">{{deal.created | date: 'short'}}</td>
+                        <td class="tp-tasks-td">{{deal.id}}</td>
+                        <td class="tp-tasks-td">{{deal.subject.name}}</td>
                     </tr>
                 </tbody>
             </table>

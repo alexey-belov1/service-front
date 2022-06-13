@@ -9,6 +9,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {SharedModule} from '../shared/shared.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from '../shared/interceptors/auth.interceptor';
+import {ErrorHandlerInterceptor} from '../shared/interceptors/errorhandler.interceptor';
+import {NotificationInterceptor} from '../shared/interceptors/notification.interceptor';
 
 @NgModule({
     declarations: [
@@ -28,7 +30,17 @@ import {AuthInterceptor} from '../shared/interceptors/auth.interceptor';
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
             multi: true
-        }
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ErrorHandlerInterceptor,
+            multi: true
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: NotificationInterceptor,
+            multi: true
+        },
     ],
     bootstrap: [AppComponent]
 })

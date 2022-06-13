@@ -16,13 +16,13 @@ export class NavbarComponent implements OnInit {
 
     items: Item[] = [
         {
-            router: '/create-deal',
-            text: 'Получить услугу'
-        },
-        {
             router: '/deals',
             text: 'Список оказанных услуг'
         },
+        {
+            router: '/create-deal',
+            text: 'Получить услугу'
+        }
     ];
 
     logoutItem: Item = {
