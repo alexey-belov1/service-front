@@ -19,5 +19,4 @@ export class DealsPageComponent implements OnInit {
             this.deals = res.body ? res.body : [];
         });
     }
-
 }

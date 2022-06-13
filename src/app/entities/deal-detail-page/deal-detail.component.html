@@ -4,28 +4,29 @@
         <div class="card-body">
             <table class="table">
                 <tbody>
-                <tr>
-                    <th scope="row">ФИО</th>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <th scope="row">Дата создания</th>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <th scope="row">Дата оказания</th>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <th scope="row">Номер</th>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <th scope="row">Наименование</th>
-                    <td>Почистить ботинки</td>
-                </tr>
+                    <tr>
+                        <td>ФИО</td>
+                        <td>{{this.deal.fio}}</td>
+                    </tr>
+                    <tr>
+                        <td>Дата создания</td>
+                        <td>{{this.deal.created | date: 'short'}}</td>
+                    </tr>
+                    <tr>
+                        <td>Дата оказания</td>
+                        <td>{{this.deal.provided | date: 'short'}}</td>
+                    </tr>
+                    <tr>
+                        <td>Номер</td>
+                        <td>{{this.deal.id}}</td>
+                    </tr>
+                    <tr>
+                        <td>Наименование услуги</td>
+                        <td>{{this.deal.subject.name}}</td>
+                    </tr>
                 </tbody>
             </table>
+            <button class="btn btn-dark" [routerLink]="['/deals']">Вернуться к списку оказанных услуг</button>
         </div>
     </div>
 </div>

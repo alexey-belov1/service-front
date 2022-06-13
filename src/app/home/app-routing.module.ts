@@ -13,26 +13,22 @@ const routes: Routes = [
                 loadChildren: () => import('../entities/deals-page/deals-page.module').then(m => m.DealsPageModule)
             },
             {
-                path: 'deal',
+                path: 'deal/:id',
                 loadChildren: () => import('../entities/deal-detail-page/deal-detail-page.module').then(m => m.DealDetailPageModule)
             },
             {
                 path: 'create-deal',
                 loadChildren: () => import('../entities/create-service-page/create-deal-page.module').then(m => m.CreateDealPageModule)
-            },
-/*            {
-                path: 'login',
-                loadChildren: () => import('../entities/login-page/login-page.module').then(m => m.LoginPageModule)
-            },*/
-            {
-                path: 'registration',
-                loadChildren: () => import('../entities/registration-page/registration-page.module').then(m => m.RegistrationPageModule)
             }
         ]
     },
     {
         path: 'login',
         loadChildren: () => import('../entities/login-page/login-page.module').then(m => m.LoginPageModule)
+    },
+    {
+        path: 'registration',
+        loadChildren: () => import('../entities/registration-page/registration-page.module').then(m => m.RegistrationPageModule)
     }
 ];
 

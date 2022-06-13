@@ -13,7 +13,7 @@
                 <tbody>
                     <tr class="tp-tasks-tr" *ngFor="let deal of deals">
                         <td class="tp-tasks-td">{{deal.created | date: 'short'}}</td>
-                        <td class="tp-tasks-td">{{deal.id}}</td>
+                        <td class="tp-tasks-td"><a [routerLink]="['/deal', deal.id]">{{deal.id}}</a></td>
                         <td class="tp-tasks-td">{{deal.subject.name}}</td>
                     </tr>
                 </tbody>
