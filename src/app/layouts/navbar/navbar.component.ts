@@ -1,46 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../../shared/services/auth.service';
+import {Router} from '@angular/router';
 
 export interface Item {
-  router: string;
-  text: string;
+    router: string;
+    text: string;
 }
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
 
-  items: Item[] = [
-    {
-      router: '/create-deal',
-      text: 'Получить услугу'
-    },
-    {
-      router: '/deals',
-      text: 'Список оказанных услуг'
-    },
-  ];
+    items: Item[] = [
+        {
+            router: '/create-deal',
+            text: 'Получить услугу'
+        },
+        {
+            router: '/deals',
+            text: 'Список оказанных услуг'
+        },
+    ];
 
-  registration: Item = {
-    router: '/registration',
-    text: 'Зарегистрироваться'
-  };
+    logoutItem: Item = {
+        router: '/',
+        text: 'Выйти'
+    };
 
-  login: Item = {
-    router: '/login',
-    text: 'Войти'
-  };
+    constructor(
+        public authService: AuthService,
+        private router: Router
+    ) {
+    }
 
-  logout: Item = {
-    router: '/',
-    text: 'Выйти'
-  };
+    ngOnInit(): void {
+    }
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+    logout(): void {
+        this.authService.logout();
+        this.router.navigate(['/login']).then();
+    }
 
 }

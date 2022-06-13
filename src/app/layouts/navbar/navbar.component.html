@@ -7,7 +7,7 @@
 
   <ul class="navbar-nav me-3">
     <li class="nav-item">
-      <a class="nav-link" [routerLink]="logout.router">{{logout.text}}</a>
+      <a class="nav-link" [routerLink]="logoutItem.router" (click)="logout()">{{logoutItem.text}}</a>
     </li>
   </ul>
 

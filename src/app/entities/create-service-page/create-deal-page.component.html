@@ -2,33 +2,38 @@
     <div class="card">
         <div class="card-header">Получить услугу</div>
         <div class="card-body">
-            <form>
+            <form [formGroup]="form" (ngSubmit)="submit()">
                 <div class="form-group pb-4">
                     <label for="subject">Услуга</label>
-                    <select class="form-control" id="subject">
-                        <option disabled selected>Выбрать услугу</option>
-                        <option>Регистрация авто</option>
-                        <option>Регистрация квартиры</option>
-                        <option>Фигня</option>
+                    <select class="form-control" id="subject" formControlName="subject">
+                        <option *ngIf="!form.value.subject" [ngValue]="null"></option>
+                        <option *ngFor="let subject of subjects" [ngValue]="subject">{{subject.name}}</option>
                     </select>
+                    <div *ngIf="form.get('subject').invalid && form.get('subject').touched">
+                        <span *ngIf="form.get('subject').errors.required" class="validation">
+                            Поле обязательное для заполнения
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group pb-4" formControlName="fio">
+                    <label for="fio">ФИО</label>
+                    <input type="text" class="form-control" id="fio" placeholder="ФИО" formControlName="fio">
+                    <div *ngIf="form.get('fio').invalid && form.get('fio').touched">
+                        <span *ngIf="form.get('fio').errors.required" class="validation">
+                            Поле обязательное для заполнения
+                        </span>
+                    </div>
                 </div>
                 <div class="form-group pb-4">
-                    <label for="surname">Фамилия</label>
-                    <input type="text" class="form-control" id="surname" placeholder="Фамилия">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
+                    <div *ngIf="form.get('email').invalid && form.get('email').touched">
+                        <span *ngIf="form.get('email').errors.required" class="validation">
+                            Поле обязательное для заполнения
+                        </span>
+                    </div>
                 </div>
-                <div class="form-group pb-4">
-                    <label for="name">Имя</label>
-                    <input type="text" class="form-control" id="name" placeholder="Имя">
-                </div>
-                <div class="form-group pb-4">
-                    <label for="patronymic">Отчество</label>
-                    <input type="text" class="form-control" id="patronymic" placeholder="Отчество">
-                </div>
-                <div class="form-group pb-4">
-                    <label for="patronymic">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email">
-                </div>
-                <button type="submit" class="btn btn-dark">Отправить</button>
+                <button type="submit" class="btn btn-dark" [disabled]="submitted">Отправить</button>
             </form>
         </div>
     </div>
